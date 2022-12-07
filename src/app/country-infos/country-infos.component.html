@@ -1,0 +1,57 @@
+<div class="search">
+    <input class="form-control" type="text" name="search" [(ngModel)]="filtreCountry" autocomplete="off"
+        placeholder="&#61442;  Start searching for a country">
+</div>
+<section class="list_country">
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let c of countryServ.countries| name:filtreCountry">
+                <td>{{c.name.common}}  {{c.flag}}</td>
+                <button (click)="openInfoCountry(c)">Infos</button>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<section *ngIf="country">
+    <h3>Informations sur le pays</h3>
+    <ul>
+        <li>Common Name : {{country.name.common}} </li>
+        <li>Offical Name : {{country.name.official}} </li>
+        <li>Latitude : {{country.latlng[0]}} </li>
+        <li>Longitude : {{country.latlng[1]}} </li>
+        <li>Capital : {{country.capital[0]}} </li>
+        <ul>
+            <li>Latitude : {{country.capitalInfo.latlng[0]}} </li>
+            <li>Longitude : {{country.capitalInfo.latlng[1]}} </li>
+        </ul>
+        <li>Money : </li>
+        <ul *ngFor="let currencies of country.currencies | keyvalue;">
+            <li>{{currencies.key}}, {{currencies.value.name}}, {{currencies.value.symbol}}</li>
+        </ul>
+        <li>Status : {{country.status}} </li>
+        <li>Region : {{country.region}} </li>
+        <li>Languages : </li>
+        <ul *ngFor="let language of country.languages | keyvalue;">
+            <li>{{ language.key }}, {{language.value}}</li>
+        </ul>
+
+    </ul>
+    <ul *ngIf="country">
+        <li>Area : {{country.area}} </li>
+        <li>Borders : {{country.borders}} </li>
+        <li>Population : {{country.population}} </li>
+        <li>Continent : {{country.continent}} </li>
+        <li>Timezone : {{country.timezone}} </li>
+        <li>Gini : </li>
+        <ul *ngFor="let gini of country.gini | keyvalue;">
+            <li>{{ gini.key }}, {{ gini.value }}</li>
+        </ul>
+    </ul>
+    <span *ngIf="country" class="flag">{{country.flag}}</span>
+</section>

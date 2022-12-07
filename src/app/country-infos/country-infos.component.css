@@ -1,0 +1,36 @@
+.form-control {
+    display: flex;
+    justify-content: left;
+    box-shadow: 0 10px 40px 0 #B0C1D9;
+    width: 500px;
+    padding-bottom: 10px;
+}
+
+.form-control::placeholder {
+    font-family: FontAwesome;
+}
+
+.list_country {
+    width: 40%;
+    vertical-align: top;
+    height: 100%;
+}
+
+
+
+.flag {
+    display: flex;
+    font-size:200px;
+    justify-content:left;
+    vertical-align: top;
+}
+
+app-country-infos {
+    width: 100%;
+    display: inline-block;
+}
+
+section {
+    width: 40%;
+    float: left;
+}
